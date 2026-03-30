@@ -1,16 +1,7 @@
 const app = require("./app");
 const env = require("./config/env");
 const { connectDB } = require("./config/db");
-
-async function seedDefaults() {
-  // M01 fixes the boot order only. Seed implementation follows later modules.
-  if (!env.adminBootstrapEnabled) {
-    console.info("[boot] Default bootstrap seed disabled");
-    return;
-  }
-
-  console.info("[boot] Default bootstrap seed deferred for M01");
-}
+const { seedDefaults } = require("./utils/seedDefaults");
 
 async function startServer() {
   await connectDB();
